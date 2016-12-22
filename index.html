@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <title>LOGIN</title>
+            <meta charset="UTF-8">
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+            <script src="app.js"></script>
+            <script src="googlesdk.js"></script>
+            <script src="linkedinsdk.js"></script>
+            <!-- -->
+    </head>
+
+<body>
+
+
+    <div ng-controller="MyLinkedinController as li">
+        <button ng-click="li.login();">Accedi</button>
+    </div>
+
+
+
+    <div ng-controller="GooCtrl">
+        <a href="javascript:void(0);" ng-click="login()">Login with Google Plus</a>
+    </div>
+
+</body>
+</html> 
