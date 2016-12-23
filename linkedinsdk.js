@@ -6,7 +6,7 @@ app.provider('LinkedIn', [function () {
 
     // Additional provided onLoad handlers
     var _onload = [];
-
+    
 
     /**
      * When the LinkedIn SDK is loaded
@@ -94,6 +94,26 @@ app.provider('LinkedIn', [function () {
 
       return _in;
     };
+    
+        var getProfileData = function() { // Use the API call wrapper to request the member's basic profile data
+        IN.API.Profile("me").fields("id,first-name,last-name,picture-urls::(original),public-profile-url,location:(name),email-address,headline,industry,\n\
+positions:(id,title,summary,start-date,end-date,is-current,\n\
+company:(id,name,type,size,industry,ticker)),\n\
+educations:(id,school-name,field-of-study,start-date,end-date,degree,activities,notes)").result(function (me) {
+            //("id,firstName,lastName,picture-urls::(original),public-profile-url,location:(name),email-address"
+            var profile = me.values[0];
+
+            var luser = {
+                id: profile.id,
+                firstName: profile.firstName,
+                lastName: profile.lastName,
+                emailAddress: profile.emailAddress,
+                profileUrl: profile.publicProfileUrl
+            };
+            
+            window.localStorage.lprofile = JSON.stringify(luser);
+        });
+    };
 }]);
 
 app.config(['LinkedInProvider', function(LinkedInProvider) {
@@ -113,22 +133,3 @@ app.config(['LinkedInProvider', function(LinkedInProvider) {
     lang: 'en_US'
   });
 }]);
-
-
-
-    var getProfileData = function() { // Use the API call wrapper to request the member's basic profile data
-        IN.API.Profile("me").fields("id,first-name,last-name,picture-urls::(original),public-profile-url,location:(name),email-address,headline,industry,\n\
-positions:(id,title,summary,start-date,end-date,is-current,\n\
-company:(id,name,type,size,industry,ticker)),\n\
-educations:(id,school-name,field-of-study,start-date,end-date,degree,activities,notes)").result(function (me) {
-            //("id,firstName,lastName,picture-urls::(original),public-profile-url,location:(name),email-address"
-            var profile = me.values[0];
-            var id = profile.id;
-            var firstName = profile.firstName;
-            var lastName = profile.lastName;
-            var emailAddress = profile.emailAddress;
-            var profileUrl = profile.publicProfileUrl;
-            var country = profile.location.name;
-            console.log(profile);
-        });
-    };

@@ -14,14 +14,25 @@
 
 
     <div ng-controller="MyLinkedinController as li">
-        <button ng-click="li.login();">Accedi</button>
+        <button ng-click="li.login();">Accedi con Linkedin</button>
+        <p>{{li.linkedin.id}}</p>
+        <p>{{li.linkedin.firstName}}</p>
+        <p>{{li.linkedin.lastName}}</p>
+        <p>{{li.linkedin.emailAddress}}</p>
+        <p>{{li.linkedin.profileUrl}}</p>
     </div>
 
 
-
-    <div ng-controller="GooCtrl">
-        <a href="javascript:void(0);" ng-click="login()">Login with Google Plus</a>
+    <div ng-controller="GooCtrl as go">
+        <button ng-click="login()">Accedi con Google Plus</button>
+        <p>{{go.google.id}}</p>
+        <p>{{go.google.firstName}}</p>
+        <p>{{go.google.lastName}}</p>
+        <p>{{go.google.emailAddress}}</p>
+        <p>{{go.google.profileUrl}}</p>
     </div>
-
+    
+    
+    
 </body>
 </html> 
