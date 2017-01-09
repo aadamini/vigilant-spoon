@@ -25,9 +25,12 @@ app.controller('MyLinkedinController', ['LinkedIn', function (LinkedIn) {
             this.linkedin.emailAddress = "";
             this.linkedin.profileUrl = "";
             
+        if(window.localStorage.lprofile===undefined){
+        console.log(this.linkedin);   
+        }else{
         this.linkedin = JSON.parse(window.localStorage.lprofile);
        console.log(this.linkedin);
-            
+        }    
         
     this.login = function(){
         LinkedIn.User.authorize().params({"scope":["r_basicprofile", "r_emailaddress"]});
@@ -39,9 +42,27 @@ app.controller('MyLinkedinController', ['LinkedIn', function (LinkedIn) {
 
 app.controller('GooCtrl', ['$scope','GooglePlus', function ($scope, GooglePlus) {
 
-this.google = JSON.parse(window.localStorage.gprofile);
-       console.log(this.google);
+
+       this.google ={};
+            this.google.id = "";
+            this.google.firstName = "";
+            this.google.lastName = "";
+            this.google.emailAddress = "";
+            this.google.profileUrl = "";
        
+//this.google = JSON.parse(window.localStorage.gprofile);
+//       console.log(this.google);
+     
+        if(window.localStorage.gprofile===undefined){
+        console.log(this.google);   
+        }else{
+        this.google = JSON.parse(window.localStorage.gprofile);
+       console.log(this.google);
+        }
+        
+        
+        
+        
     $scope.login = function () {
 
         GooglePlus.login().then(function (authResult) {
@@ -64,7 +85,7 @@ this.google = JSON.parse(window.localStorage.gprofile);
                 profileUrl: user.link
             };
             
-            window.localStorage.gprofile = JSON.stringify(guser);
+           window.localStorage.gprofile = JSON.stringify(guser);
                 
                 
             });
