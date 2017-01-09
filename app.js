@@ -26,12 +26,14 @@ app.controller('MyLinkedinController', ['LinkedIn', function (LinkedIn) {
             this.linkedin.profileUrl = "";
             
         if(window.localStorage.lprofile===undefined){
-        console.log(this.linkedin);   
-        }else{
+        console.log(this.linkedin);
+        this.linkedin.info = "Aggiorna per visualizzare le informazioni dopo il login con linkedin";
+        }else {
         this.linkedin = JSON.parse(window.localStorage.lprofile);
        console.log(this.linkedin);
         }    
-        
+       
+                     
     this.login = function(){
         LinkedIn.User.authorize().params({"scope":["r_basicprofile", "r_emailaddress"]});
     };
@@ -55,6 +57,7 @@ app.controller('GooCtrl', ['$scope','GooglePlus', function ($scope, GooglePlus) 
      
         if(window.localStorage.gprofile===undefined){
         console.log(this.google);   
+        this.google.info = "Aggiorna per visualizzare le informazioni dopo il login con google";
         }else{
         this.google = JSON.parse(window.localStorage.gprofile);
        console.log(this.google);
