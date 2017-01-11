@@ -4,15 +4,15 @@
         <title>LOGIN</title>
             <meta charset="UTF-8">
             <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-            <script src="app.js"></script>
+            <!-- <script src="app.js"></script>  the double-controller-->
+            <script src="soclog.js"></script>
             <script src="googlesdk.js"></script>
             <script src="linkedinsdk.js"></script>
             <!-- -->
     </head>
 
+<!-- old metod with double-controller
 <body>
-
-
     <div ng-controller="MyLinkedinController as li">
         <button ng-click="li.login();">Accedi con Linkedin</button>
         <p>{{li.linkedin.id}}</p>
@@ -23,7 +23,6 @@
         <p>{{li.linkedin.info}}</p>
     </div>
 
-
     <div ng-controller="GooCtrl as go">
         <button ng-click="login()">Accedi con Google Plus</button>
         <p>{{go.google.id}}</p>
@@ -33,8 +32,27 @@
         <p>{{go.google.profileUrl}}</p>
         <p>{{go.google.info}}</p>
     </div>
-    
-    
-    
 </body>
+-->
+
+<body ng-controller="MainController as mc">
+    <div>
+        <button ng-click="mc.loginlinkedin()">Accedi con Linkedin</button>
+        <p>{{mc.linkedin.id}}</p>
+        <p>{{mc.linkedin.firstName}}</p>
+        <p>{{mc.linkedin.lastName}}</p>
+        <p>{{mc.linkedin.emailAddress}}</p>
+        <p>{{mc.linkedin.profileUrl}}</p>
+    </div>
+
+    <div>
+        <button ng-click="mc.logingoogle()">Accedi con Google Plus</button>
+        <p>{{mc.google.id}}</p>
+        <p>{{mc.google.firstName}}</p>
+        <p>{{mc.google.lastName}}</p>
+        <p>{{mc.google.emailAddress}}</p>
+        <p>{{mc.google.profileUrl}}</p>
+    </div>
+</body>
+
 </html> 

@@ -100,7 +100,7 @@ app.provider('LinkedIn', [function () {
 positions:(id,title,summary,start-date,end-date,is-current,\n\
 company:(id,name,type,size,industry,ticker)),\n\
 educations:(id,school-name,field-of-study,start-date,end-date,degree,activities,notes)").result(function (me) {
-            //("id,firstName,lastName,picture-urls::(original),public-profile-url,location:(name),email-address"
+            //"id,firstName,lastName,picture-urls::(original),public-profile-url,location:(name),email-address"
             var profile = me.values[0];
 
             var luser = {
